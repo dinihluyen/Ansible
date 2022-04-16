@@ -1,4 +1,5 @@
 ---
+- name: Set Ip
   hosts: R1
   gather_facts: no
 
