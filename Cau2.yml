@@ -1,0 +1,35 @@
+---
+- hosts: R1
+  gather_facts: no
+
+  tasks:
+    - name: Static route R1
+      cisco.ios.ios_static_routes:
+      - address_families:
+        - afi: ipv4
+          routes:
+            - dest: 192.168.2.0/24
+              next_hops:
+              - forward_router_address: 192.168.12.2
+              name: merged_route_1
+              distance_metric: 1
+              tag: 10
+              multicast: true
+
+- hosts: R2
+  gather_facts: no
+
+  tasks:
+    - name: Static route R2
+      cisco.ios.ios_static_routes:
+      - address_families:
+        - afi: ipv4
+          routes:
+            - dest: 192.168.1.0/24
+              next_hops:
+              - forward_router_address: 192.168.12.1
+              name: merged_route_1
+              distance_metric: 1
+              tag: 10
+              multicast: true
+    
