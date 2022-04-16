@@ -1,0 +1,28 @@
+---
+- name: Ip Config
+  host: R1
+  gather_facts: no
+
+  task:
+  - name: dat ip e0/1 and e0/2
+   ios_l3_interfaces:
+    config:
+    - name: ethernet e0/1
+      ipv4:
+      - address: 192.168.1.1/24
+    - name: ethernet e0/2
+      - address: 192.168.12.1/24 
+
+- name: Ip Config
+  host: R2
+  gather_facts: no
+
+  task:
+  - name: dat ip e0/1 and e0/2
+   ios_l3_interfaces:
+    config:
+    - name: ethernet e0/1
+      ipv4:
+      - address: 192.168.2.1/24
+    - name: ethernet e0/2
+      - address: 192.168.12.2/24 
