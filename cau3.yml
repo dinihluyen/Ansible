@@ -1,0 +1,11 @@
+---
+- hosts: R2
+  gather_facts: no
+
+  tasks:
+    - name: Test reachability
+      ios_ping:
+        dest: 192.168.12.1
+        source: Ethernet0/1
+
+
